@@ -29,17 +29,20 @@
         $cx_num_ant = $_POST['cx_num_ant'];
         $cx_num_cust = $_POST['cx_num_cust'];
         $cod_clas_doc = $_POST['cod_clas_doc'];
-        $data_lim = $_POST['data_lim'];
+        $data_inicio = $_POST['data_inicio'];
+        $data_fim = $_POST['data_fim'];
         $desc_docs = $_POST['desc_docs'];
         $prazo_guarda = $_POST['prazo_guarda'];
         $destino = $_POST['destino'];
         $un_arq = $_POST['un_arq'];
         $conjunto = $_POST['conjunto'];
+        $rua = $_POST['rua'];
         $estante = $_POST['estante'];
         $prateleira = $_POST['prateleira'];
+        $posicao = $_POST['posicao'];
 
-        $result = mysqli_query($conexao, "INSERT INTO cadastro(data_transf_cust,doc_encam,un_prod_sigla,un_prod_nome,cx_num_ant,cx_num_cust,cod_clas_doc,data_lim,desc_docs,prazo_guarda,destino,un_arq,conjunto,estante,prateleira) 
-        VALUES ('$data_transf_cust','$doc_encam','$un_prod_sigla','$un_prod_nome','$cx_num_ant','$cx_num_cust','$cod_clas_doc','$data_lim','$desc_docs','$prazo_guarda','$destino','$un_arq','$conjunto','$estante','$prateleira')");
+        $result = mysqli_query($conexao, "INSERT INTO cadastro(data_transf_cust,doc_encam,un_prod_sigla,un_prod_nome,cx_num_ant,cx_num_cust,cod_clas_doc,data_inicio,data_fim,desc_docs,prazo_guarda,destino,un_arq,conjunto,rua,estante,prateleira,posicao) 
+        VALUES ('$data_transf_cust','$doc_encam','$un_prod_sigla','$un_prod_nome','$cx_num_ant','$cx_num_cust','$cod_clas_doc','$data_inicio','$data_fim','$desc_docs','$prazo_guarda','$destino','$un_arq','$conjunto','$rua','$estante','$prateleira''$posicao')");
 
     }
 
@@ -52,146 +55,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Controle de Arquivos</title>
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background-image: linear-gradient(to right, rgb(20, 147, 220), rgb(17, 54, 71));
-        }
-
-        .box {
-
-            position: absolute;
-            top: 20%;
-            left: 50%;
-            transform: translate(-50%, -20%);
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 40px;
-            border-radius: 15px;
-            width: 50%;
-            color: white;
-        }
-
-        fieldset {
-            border: 3px solid dodgerblue;
-        }
-
-        legend {
-            border: 3px solid dodgerblue;
-            padding: 10px;
-            text-align: center;
-            background-color: dodgerblue;
-            border-radius: 8px;
-            font-size: 20px;
-        }
-
-        .column {
-            float: left;
-            width: 45%;
-            padding: 5px;
-            /*height: 300px;*/
-        }
-
-        .column2 {
-            float: right;
-            width: 45%;
-            padding: 5px;
-            /*height: 300px;*/
-        }
-
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-
-        #loc {
-            border: 3px solid dodgerblue;
-            padding: 10px;
-            text-align: center;
-            background-color: dodgerblue;
-            border-radius: 8px;
-            font-size: 15px;
-        }
-
-        .inputBox {
-            position: relative;
-        }
-
-        .inputUser {
-            background: none;
-            border: none;
-            border-bottom: 1px solid white;
-            outline: none;
-            color: white;
-            font-size: 15px;
-            width: 100%;
-            letter-spacing: 2px;
-        }
-
-        .labelInput {
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            pointer-events: none;
-            transition: .5s;
-        }
-
-        .inputUser:focus~.labelInput,
-        .inputUser:valid~.labelInput {
-            top: -20px;
-            font-size: 12px;
-            color: dodgerblue;
-        }
-
-        #data_transf_cust {
-            border: none;
-            padding: 8px;
-            border-radius: 10px;
-            outline: none;
-            font-size: 15px;
-        }
-
-        #submit {
-            background-image: linear-gradient(to right, rgb(0, 92, 197), rgb(90, 20, 220));
-            width: 100%;
-            border: none;
-            padding: 15px;
-            color: white;
-            font-size: 15px;
-            cursor: pointer;
-            border-radius: 10px;
-        }
-
-        #submit:hover {
-            background-image: linear-gradient(to right, rgb(0, 80, 172), rgb(80, 19, 195));
-        }
-
-        #reset {
-            background-image: linear-gradient(to right, rgb(0, 92, 197), rgb(90, 20, 220));
-            width: 100%;
-            border: none;
-            padding: 15px;
-            color: white;
-            font-size: 15px;
-            cursor: pointer;
-            border-radius: 10px;
-        }
-
-        #reset:hover {
-            background-image: linear-gradient(to right, rgb(0, 80, 172), rgb(80, 19, 195));
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="estilos.css">
 </head>
 
 <body>
 
-    <div class="box">
+    <div class="box22">
         <div class="row">
             <form action="formulario.php" method="post">
                 <fieldset>
                     <legend><b>SICONTRAR</b></legend>
                     <br>
-                    <div class="column">
+                    <div class="column1">
                         <!--<label for="data_transf_cust">Data de transferência ao arquivo de custódia</label>-->
                         <p>Data de transferência ao arquivo de custódia</p>
                         <input type="date" name="data_transf_cust" id="data_transf_cust" required>
@@ -221,8 +96,12 @@
                             <label for="cod_clas_doc" class="labelInput">Código classificação documental</label>
                         </div><br><br>
                         <div class="inputBox">
-                            <input type="text" name="data_lim" id="data_lim" class="inputUser" required>
-                            <label for="data_lim" class="labelInput">Datas-limite</label>
+                            <input type="text" name="data_inicio" id="data_inicio" class="inputUser" required>
+                            <label for="data_inicio" class="labelInput">Data-limite Início</label>
+                        </div><br><br>
+                        <div class="inputBox">
+                            <input type="text" name="data_fim" id="data_fim" class="inputUser" required>
+                            <label for="data_fim" class="labelInput">Data-limite Fim</label>
                         </div><br><br>
                         <div class="inputBox">
                             <input type="text" name="desc_docs" id="desc_docs" class="inputUser" required>
@@ -253,12 +132,20 @@
                                     <label for="conjunto" class="labelInput">Conjunto</label>
                                 </div><br><br>
                                 <div class="inputBox">
+                                    <input type="text" name="rua" id="rua" class="inputUser" required>
+                                    <label for="rua" class="labelInput">Rua</label>
+                                </div><br><br>
+                                <div class="inputBox">
                                     <input type="text" name="estante" id="estante" class="inputUser" required>
                                     <label for="estante" class="labelInput">Estante</label>
                                 </div><br><br>
                                 <div class="inputBox">
                                     <input type="text" name="prateleira" id="prateleira" class="inputUser" required>
                                     <label for="prateleira" class="labelInput">Prateleira</label>
+                                </div><br><br>
+                                <div class="inputBox">
+                                    <input type="text" name="posicao" id="posicao" class="inputUser" required>
+                                    <label for="posicao" class="labelInput">Posição</label>
                                 </div>
                             </fieldset>
                         </div><br>

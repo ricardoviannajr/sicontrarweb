@@ -5,7 +5,7 @@
     $dbPassword = '';
     $dbName = 'sicontrar';
 
-    $conexao = new  mysqli($dbHost,$dbUsername,$dbPassword,$dbName);
+    $conexao = new  mysqli('localhost','root','','sicontrar');
 
     //if($conexao->connect_errno)
     //{
