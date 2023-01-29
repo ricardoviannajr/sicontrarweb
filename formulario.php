@@ -60,7 +60,7 @@
 
 <body>
 
-    <div class="box22">
+    <div class="box2">
         <div class="row">
             <form action="formulario.php" method="post">
                 <fieldset>

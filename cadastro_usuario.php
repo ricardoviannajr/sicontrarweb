@@ -1,6 +1,6 @@
 <?php
 
-    if(isset($_POST['submit']))
+  if(isset($_POST['submit']))
     {
         include_once('config.php');
         
@@ -10,9 +10,20 @@
         $senha = $_POST['senha'];
         $tipo = $_POST['tipo'];
 
-        $result = mysqli_query($conexao, "INSERT INTO usuarios(matricula,nome,email,senha,tipo) 
-        VALUES ('$matricula','$nome','$email','$senha','$tipo')");
+        $query = "SELECT * FROM usuarios WHERE matricula='$matricula'";
+        $result = mysqli_query($conexao, $query);
+        $row = mysqli_fetch_array($result);
 
+        if($row){
+            echo "<script>alert('Matrícula já cadastrada'); document.getElementById('cadastro_usuario').reset();</script>";
+            header("Location: cadastro_sucesso.php?matricula=$matricula&nome=$nome&email=$email&senha=$senha&tipo=$tipo");
+        }else{
+            $result = mysqli_query($conexao, "INSERT INTO usuarios(matricula,nome,email,senha,tipo) 
+            VALUES ('$matricula','$nome','$email','$senha','$tipo')");
+            echo "<script>alert('Cadastro realizado com sucesso'); document.getElementById('cadastro_usuario').reset();</script>";
+            header("Location: cadastro_sucesso.php?matricula=$matricula&nome=$nome&email=$email&senha=$senha&tipo=$tipo");
+        }
+        unset($_POST);
     }
 
 ?>
@@ -43,9 +54,9 @@
   <body>
     <div  class="box1">
       <div class="row">
-      <form action="cadastro_usuario.php" method="post" enctype="multipart/form-data">
+      <form id="cadastro_usuario" action="cadastro_usuario.php" method="post" enctype="multipart/form-data">
         <fieldset>
-          <legend><b>Login</b></legend>
+          <legend><b>Cadastro de Usuários</b></legend>
           <br>
           <div class="column">
             <div class="inputBox">

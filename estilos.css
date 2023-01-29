@@ -4,7 +4,6 @@ body {
 }
 
 .box1 {
-
     position: absolute;
     top: 20%;
     left: 50%;
@@ -17,7 +16,6 @@ body {
 }
 
 .box2 {
-
     position: absolute;
     top: 20%;
     left: 50%;
@@ -26,6 +24,18 @@ body {
     padding: 40px;
     border-radius: 15px;
     width: 50%;
+    color: white;
+}
+
+.box3 {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    border-radius: 15px;
+    width: 30%;
     color: white;
 }
 
@@ -59,6 +69,12 @@ legend {
 .column2 {
     float: right;
     width: 45%;
+    padding: 5px;
+    /*height: 300px;*/
+}
+
+.column3 {
+    width: 95%;
     padding: 5px;
     /*height: 300px;*/
 }
@@ -144,4 +160,33 @@ legend {
 
 #reset:hover {
     background-image: linear-gradient(to right, rgb(0, 80, 172), rgb(80, 19, 195));
+}
+
+#tabela_usuarios {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#tabela_usuarios td,
+#tabela_usuarios th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#tabela_usuarios tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#tabela_usuarios tr:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+#tabela_usuarios th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: dodgerblue;
+    color: white;
 }

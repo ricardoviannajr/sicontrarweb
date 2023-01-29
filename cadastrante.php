@@ -1,5 +1,13 @@
 <?php
 
+session_start();
+
+if(!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
+    // redirecionar o usuário para a página de login
+    header("Location: sicontrar.php");
+    exit;
+}
+
     if(isset($_POST['submit']))
     {
         /* 
