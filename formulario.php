@@ -1,8 +1,9 @@
 <?php
 
-    if(isset($_POST['submit']))
-    {
-        /* 
+$matricula = $_COOKIE['matricula'];
+
+if (isset($_POST['submit'])) {
+    /* 
         print_r($_POST['data_transf_cust']);
         print_r($_POST['doc_encam']);
         print_r($_POST['un_prod_sigla']);
@@ -20,31 +21,31 @@
         print_r($_POST['prateleira']);   
         */
 
-        include_once('config.php');
-        
-        $data_transf_cust = $_POST['data_transf_cust'];
-        $doc_encam = $_POST['doc_encam'];
-        $un_prod_sigla = $_POST['un_prod_sigla'];
-        $un_prod_nome = $_POST['un_prod_nome'];
-        $cx_num_ant = $_POST['cx_num_ant'];
-        $cx_num_cust = $_POST['cx_num_cust'];
-        $cod_clas_doc = $_POST['cod_clas_doc'];
-        $data_inicio = $_POST['data_inicio'];
-        $data_fim = $_POST['data_fim'];
-        $desc_docs = $_POST['desc_docs'];
-        $prazo_guarda = $_POST['prazo_guarda'];
-        $destino = $_POST['destino'];
-        $un_arq = $_POST['un_arq'];
-        $conjunto = $_POST['conjunto'];
-        $rua = $_POST['rua'];
-        $estante = $_POST['estante'];
-        $prateleira = $_POST['prateleira'];
-        $posicao = $_POST['posicao'];
+    include_once('config.php');
 
-        $result = mysqli_query($conexao, "INSERT INTO cadastro(data_transf_cust,doc_encam,un_prod_sigla,un_prod_nome,cx_num_ant,cx_num_cust,cod_clas_doc,data_inicio,data_fim,desc_docs,prazo_guarda,destino,un_arq,conjunto,rua,estante,prateleira,posicao) 
-        VALUES ('$data_transf_cust','$doc_encam','$un_prod_sigla','$un_prod_nome','$cx_num_ant','$cx_num_cust','$cod_clas_doc','$data_inicio','$data_fim','$desc_docs','$prazo_guarda','$destino','$un_arq','$conjunto','$rua','$estante','$prateleira''$posicao')");
+    $data_transf_cust = $_POST['data_transf_cust'];
+    $doc_encam = $_POST['doc_encam'];
+    $un_prod_sigla = $_POST['un_prod_sigla'];
+    $un_prod_nome = $_POST['un_prod_nome'];
+    $cx_num_ant = $_POST['cx_num_ant'];
+    $cx_num_cust = $_POST['cx_num_cust'];
+    $cod_clas_doc = $_POST['cod_clas_doc'];
+    $data_inicio = $_POST['data_inicio'];
+    $data_fim = $_POST['data_fim'];
+    $desc_docs = $_POST['desc_docs'];
+    $prazo_guarda = $_POST['prazo_guarda'];
+    $destino = $_POST['destino'];
+    $un_arq = $_POST['un_arq'];
+    $conjunto = $_POST['conjunto'];
+    $rua = $_POST['rua'];
+    $estante = $_POST['estante'];
+    $prateleira = $_POST['prateleira'];
+    $posicao = $_POST['posicao'];
+    $matricula = $_POST['matricula'];
 
-    }
+    $result = mysqli_query($conexao, "INSERT INTO cadastro(data_transf_cust,doc_encam,un_prod_sigla,un_prod_nome,cx_num_ant,cx_num_cust,cod_clas_doc,data_inicio,data_fim,desc_docs,prazo_guarda,destino,un_arq,conjunto,rua,estante,prateleira,posicao,matricula) 
+        VALUES ('$data_transf_cust','$doc_encam','$un_prod_sigla','$un_prod_nome','$cx_num_ant','$cx_num_cust','$cod_clas_doc','$data_inicio','$data_fim','$desc_docs','$prazo_guarda','$destino','$un_arq','$conjunto','$rua','$estante','$prateleira','$posicao','$matricula')");
+}
 
 ?>
 <!DOCTYPE html>
@@ -59,6 +60,14 @@
 </head>
 
 <body>
+
+    <div class="sidebar">
+        <p>Usuário: <?php echo $matricula; ?></p>
+        <a class="active" href="formulario.php">Gestão de Cadastros</a>
+        <a href="cadastrante.php">Cadastrante</a>
+        <a href="listagem.php">Listagem de Caixas</a>
+        <a href="sicontrar.php">Sair</a>
+    </div>
 
     <div class="box2">
         <div class="row">

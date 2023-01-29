@@ -1,16 +1,9 @@
 <?php
 
-session_start();
+$matricula = $_COOKIE['matricula'];
 
-if(!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
-    // redirecionar o usuário para a página de login
-    header("Location: sicontrar.php");
-    exit;
-}
-
-    if(isset($_POST['submit']))
-    {
-        /* 
+if (isset($_POST['submit'])) {
+    /* 
         print_r($_POST['data_transf_cust']);
         print_r($_POST['doc_encam']);
         print_r($_POST['un_prod_sigla']);
@@ -28,24 +21,24 @@ if(!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
         print_r($_POST['prateleira']);   
         */
 
-        include_once('config.php');
-        
-        $un_prod_sigla = $_POST['un_prod_sigla'];
-        $un_prod_nome = $_POST['un_prod_nome'];
-        $data_inicio = $_POST['data_inicio'];
-        $data_fim = $_POST['data_fim'];
-        $desc_docs = $_POST['desc_docs'];
-        $un_arq = $_POST['un_arq'];
-        $conjunto = $_POST['conjunto'];
-        $rua = $_POST['rua'];
-        $estante = $_POST['estante'];
-        $prateleira = $_POST['prateleira'];
-        $posicao = $_POST['posicao'];
+    include_once('config.php');
 
-        $result = mysqli_query($conexao, "INSERT INTO cadastro(un_prod_sigla,un_prod_nome,data_inicio,data_fim,desc_docs,un_arq,conjunto,rua,estante,prateleira,posicao) 
-        VALUES ('$un_prod_sigla','$un_prod_nome','$data_inicio','$data_fim','$desc_docs','$un_arq','$conjunto','$rua','$estante','$prateleira','$posicao')");
+    $un_prod_sigla = $_POST['un_prod_sigla'];
+    $un_prod_nome = $_POST['un_prod_nome'];
+    $data_inicio = $_POST['data_inicio'];
+    $data_fim = $_POST['data_fim'];
+    $desc_docs = $_POST['desc_docs'];
+    $un_arq = $_POST['un_arq'];
+    $conjunto = $_POST['conjunto'];
+    $rua = $_POST['rua'];
+    $estante = $_POST['estante'];
+    $prateleira = $_POST['prateleira'];
+    $posicao = $_POST['posicao'];
+    $matricula = $_POST['matricula'];
 
-    }
+    $result = mysqli_query($conexao, "INSERT INTO cadastro(un_prod_sigla,un_prod_nome,data_inicio,data_fim,desc_docs,un_arq,conjunto,rua,estante,prateleira,posicao,matricula) 
+        VALUES ('$un_prod_sigla','$un_prod_nome','$data_inicio','$data_fim','$desc_docs','$un_arq','$conjunto','$rua','$estante','$prateleira','$posicao','$matricula')");
+}
 
 ?>
 <!DOCTYPE html>
@@ -60,6 +53,13 @@ if(!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
 </head>
 
 <body>
+
+    <div class="sidebar">
+        <p>Usuário: <?php echo $matricula; ?></p>
+        <a class="active" href="cadastrante.php">Cadastrante</a>
+        <a href="#contact">Listagem de Caixas</a>
+        <a href="sicontrar.php">Sair</a>
+    </div>
 
     <div class="box2">
         <div class="row">

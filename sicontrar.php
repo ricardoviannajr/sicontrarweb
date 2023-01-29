@@ -1,41 +1,40 @@
-<?php
-setcookie("logged_in", "true", time() + (86400 * 30), "/");
-?>
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Controle de Arquivos</title>
-    <link rel="stylesheet" type="text/css" href="estilos.css">
-  </head>
-  <body>
-    <div  class="box1">
-      <div class="row">
-      <form action="login.php" method="post" enctype="multipart/form-data">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Controle de Arquivos</title>
+  <link rel="stylesheet" type="text/css" href="estilos.css">
+</head>
+
+<body>
+  <div class="box1">
+    <div class="row">
+      <form action="login.php" method="post" enctype="multipart/form-data" autocomplete="off">
         <fieldset>
           <legend><b>Login</b></legend>
           <br>
           <div class="column">
             <div class="inputBox">
-              <input type="text" class="inputUser" id="matricula" name="matricula" required>
+              <input type="text" class="inputUser" id="matricula" name="matricula" required autocomplete="off">
               <label for="matricula" class="labelInput">Matrícula</label>
             </div>
             <br><br>
             <div class="inputBox">
-              <input type="password" class="inputUser" id="senha" name="senha" required>
+              <input type="password" class="inputUser" id="senha" name="senha" required autocomplete="off">
               <label for="senha" class="labelInput">Senha</label>
             </div>
             <br><br>
             <div class="inputBox">
-            <input type="submit" name="submit" id="submit">
+              <input type="submit" name="submit" id="submit">
             </div>
           </div>
         </fieldset>
       </form>
-      </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
