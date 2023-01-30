@@ -1,7 +1,5 @@
 <?php
 
-$matricula = $_COOKIE['matricula'];
-
 if (isset($_POST['submit'])) {
     /* 
         print_r($_POST['data_transf_cust']);
@@ -20,6 +18,7 @@ if (isset($_POST['submit'])) {
         print_r($_POST['estante']);
         print_r($_POST['prateleira']);   
         */
+    $matricula = $_COOKIE['matricula'];
 
     include_once('config.php');
 
@@ -34,10 +33,13 @@ if (isset($_POST['submit'])) {
     $estante = $_POST['estante'];
     $prateleira = $_POST['prateleira'];
     $posicao = $_POST['posicao'];
-    $matricula = $_POST['matricula'];
 
     $result = mysqli_query($conexao, "INSERT INTO cadastro(un_prod_sigla,un_prod_nome,data_inicio,data_fim,desc_docs,un_arq,conjunto,rua,estante,prateleira,posicao,matricula) 
         VALUES ('$un_prod_sigla','$un_prod_nome','$data_inicio','$data_fim','$desc_docs','$un_arq','$conjunto','$rua','$estante','$prateleira','$posicao','$matricula')");
+
+    header("Location: cadastro_doc_sucesso.php?un_prod_sigla=$un_prod_sigla&un_prod_nome=$un_prod_nome&data_inicio=$data_inicio&data_fim=$data_fim&desc_docs=$desc_docs&un_arq=$un_arq&conjunto=$conjunto&rua=$rua&estante=$estante&prateleira=$prateleira&posicao=$posicao&matricula=$matricula");
+
+    unset($_POST);
 }
 
 ?>
@@ -57,8 +59,19 @@ if (isset($_POST['submit'])) {
     <div class="sidebar">
         <p>Usuário: <?php echo $matricula; ?></p>
         <a class="active" href="cadastrante.php">Cadastrante</a>
-        <a href="#contact">Listagem de Caixas</a>
+        <a href="listagem.php">Listagem de Caixas</a>
         <a href="sicontrar.php">Sair</a>
+        <h3>Top 10</h3>
+        <?php
+        include_once('config.php');
+        $query = "SELECT matricula, COUNT(matricula) as count FROM cadastro GROUP BY matricula ORDER BY count DESC LIMIT 10";
+        $result = mysqli_query($conexao, $query);
+        echo '<ul>';
+        while ($row = mysqli_fetch_array($result)) {
+            echo '<li>' . $row['matricula'] . ' - ' . $row['count'] . ' registros' . '</li>';
+        }
+        echo '</ul>';
+        ?>
     </div>
 
     <div class="box2">
