@@ -57,21 +57,34 @@ if (isset($_POST['submit'])) {
 <body>
 
     <div class="sidebar">
-        <p>Usuário: <?php echo $matricula; ?></p>
+        <div>
+            <br>
+            <p>Usuário: <?php
+                        if (isset($_COOKIE["matricula"])) {
+                            $matricula = $_COOKIE["matricula"];
+                        }
+                        echo $matricula;
+                        ?>
+            </p>
+            <br>
+        </div>
         <a class="active" href="cadastrante.php">Cadastrante</a>
         <a href="listagem.php">Listagem de Caixas</a>
         <a href="sicontrar.php">Sair</a>
-        <h3>Top 10</h3>
-        <?php
-        include_once('config.php');
-        $query = "SELECT matricula, COUNT(matricula) as count FROM cadastro GROUP BY matricula ORDER BY count DESC LIMIT 10";
-        $result = mysqli_query($conexao, $query);
-        echo '<ul>';
-        while ($row = mysqli_fetch_array($result)) {
-            echo '<li>' . $row['matricula'] . ' - ' . $row['count'] . ' registros' . '</li>';
-        }
-        echo '</ul>';
-        ?>
+        <br><br><br>
+        <div style="position: absolute;bottom: 5%">
+            <p>Documentos cadastrados:</p>
+            <p>
+                <?php
+                include_once('config.php');
+                $matricula = $_COOKIE['matricula'];
+                $query = "SELECT COUNT(matricula) as count FROM cadastro WHERE matricula='$matricula'";
+                $result = mysqli_query($conexao, $query);
+                $row = mysqli_fetch_array($result);
+                echo $row['count'] . ' documentos';
+                ?>
+            </p>
+        </div>
     </div>
 
     <div class="box2">

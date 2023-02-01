@@ -1,7 +1,5 @@
 <?php
 
-$matricula = $_COOKIE['matricula'];
-
 if (isset($_POST['submit'])) {
     /* 
         print_r($_POST['data_transf_cust']);
@@ -20,6 +18,8 @@ if (isset($_POST['submit'])) {
         print_r($_POST['estante']);
         print_r($_POST['prateleira']);   
         */
+
+    $matricula = $_COOKIE['matricula'];
 
     include_once('config.php');
 
@@ -41,7 +41,6 @@ if (isset($_POST['submit'])) {
     $estante = $_POST['estante'];
     $prateleira = $_POST['prateleira'];
     $posicao = $_POST['posicao'];
-    $matricula = $_POST['matricula'];
 
     $result = mysqli_query($conexao, "INSERT INTO cadastro(data_transf_cust,doc_encam,un_prod_sigla,un_prod_nome,cx_num_ant,cx_num_cust,cod_clas_doc,data_inicio,data_fim,desc_docs,prazo_guarda,destino,un_arq,conjunto,rua,estante,prateleira,posicao,matricula) 
         VALUES ('$data_transf_cust','$doc_encam','$un_prod_sigla','$un_prod_nome','$cx_num_ant','$cx_num_cust','$cod_clas_doc','$data_inicio','$data_fim','$desc_docs','$prazo_guarda','$destino','$un_arq','$conjunto','$rua','$estante','$prateleira','$posicao','$matricula')");
@@ -62,12 +61,54 @@ if (isset($_POST['submit'])) {
 <body>
 
     <div class="sidebar">
-        <p>Usuário: <?php echo $matricula; ?></p>
+        <p>Usuário: <?php
+                    if (isset($_COOKIE["matricula"])) {
+                        $matricula = $_COOKIE["matricula"];
+                    }
+                    echo $matricula;
+                    ?>
+        </p>
         <a class="active" href="formulario.php">Gestão de Cadastros</a>
         <a href="cadastrante.php">Cadastrante</a>
         <a href="listagem.php">Listagem de Caixas</a>
         <a href="sicontrar.php">Sair</a>
+        <div>
+            <h3>
+                <center>Últimos 10 Registros</center>
+            </h3>
+            <?php
+            include_once('config.php');
+            $query = "SELECT matricula FROM cadastro ORDER BY id DESC LIMIT 10";
+            $result = mysqli_query($conexao, $query);
+            $matriculas = array();
+            while ($row = mysqli_fetch_array($result)) {
+                $matriculas[] = $row['matricula'];
+            }
+            $matriculas_unique = array_unique($matriculas);
+            echo '<ul>';
+            foreach ($matriculas_unique as $matricula) {
+                echo '<li>' . $matricula . '</li>';
+            }
+            echo '</ul>';
+            ?>
+        </div>
+        <div style="position: absolute;bottom: 25%;font-size: smaller;">
+            <p>
+            <h3 style="text-align: center;">Top 10</h3>
+            <?php
+            include_once('config.php');
+            $query = "SELECT matricula, COUNT(matricula) as count FROM cadastro GROUP BY matricula ORDER BY count DESC LIMIT 10";
+            $result = mysqli_query($conexao, $query);
+            echo '<ul>';
+            while ($row = mysqli_fetch_array($result)) {
+                echo '<li>' . $row['matricula'] . ' - ' . $row['count'] . ' registros' . '</li>';
+            }
+            echo '</ul>';
+            ?>
+            </p>
+        </div>
     </div>
+
 
     <div class="box2">
         <div class="row">
