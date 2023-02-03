@@ -72,11 +72,13 @@ if (isset($_POST['submit'])) {
         <a href="cadastrante.php">Cadastrante</a>
         <a href="listagem.php">Listagem de Caixas</a>
         <a href="sicontrar.php">Sair</a>
+
+        <!--
         <div>
             <h3>
                 <center>Últimos 10 Registros</center>
             </h3>
-            <?php
+            <? php/*
             include_once('config.php');
             $query = "SELECT matricula FROM cadastro ORDER BY id DESC LIMIT 10";
             $result = mysqli_query($conexao, $query);
@@ -90,8 +92,10 @@ if (isset($_POST['submit'])) {
                 echo '<li>' . $matricula . '</li>';
             }
             echo '</ul>';
-            ?>
+            */ ?>
         </div>
+        -->
+
         <div style="position: absolute;bottom: 25%;font-size: smaller;">
             <p>
             <h3 style="text-align: center;">Top 10</h3>
@@ -117,10 +121,10 @@ if (isset($_POST['submit'])) {
                     <legend><b>SICONTRAR</b></legend>
                     <br>
                     <div class="column1">
-                        <!--<label for="data_transf_cust">Data de transferência ao arquivo de custódia</label>-->
-                        <p>Data de transferência ao arquivo de custódia</p>
-                        <input type="date" name="data_transf_cust" id="data_transf_cust" required>
-                        <br><br>
+                        <div class="inputBox">
+                            <input type="text" name="data_transf_cust" id="data_transf_cust" class="inputUser" required value="<?php echo $data_transf_cust; ?>">
+                            <label for="doc_encam" class="labelInput">Data de transferência ao arquivo de custódia</label>
+                        </div><br><br>
                         <div class="inputBox">
                             <input type="text" name="doc_encam" id="doc_encam" class="inputUser" required>
                             <label for="doc_encam" class="labelInput">Documento de encaminhamento</label>

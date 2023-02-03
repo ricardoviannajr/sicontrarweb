@@ -136,14 +136,6 @@ legend {
     color: dodgerblue;
 }
 
-#data_transf_cust {
-    border: none;
-    padding: 8px;
-    border-radius: 10px;
-    outline: none;
-    font-size: 15px;
-}
-
 #submit {
     background-image: linear-gradient(to right, rgb(0, 92, 197), rgb(90, 20, 220));
     width: 100%;

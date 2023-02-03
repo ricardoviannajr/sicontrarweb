@@ -41,11 +41,9 @@ $resultado = mysqli_query($conexao, $query);
                   <th>Prazo de Guarda</th>
                   <th>Destino</th>
                   <th>Unidade de Arquivo</th>
-                  <th>Conjunto</th>
-                  <th>Rua</th>
-                  <th>Estante</th>
-                  <th>Prateleira</th>
-                  <th>Posição</th>
+                  <th>Localização</th>
+                  <th>Matrícula</th>
+                  <th>Ações</th>
                 </tr>
               </thead>
               <tbody>
@@ -66,11 +64,11 @@ $resultado = mysqli_query($conexao, $query);
                     <td><?php echo $row['prazo_guarda'] ?></td>
                     <td><?php echo $row['destino'] ?></td>
                     <td><?php echo $row['un_arq'] ?></td>
-                    <td><?php echo $row['conjunto'] ?></td>
-                    <td><?php echo $row['rua'] ?></td>
-                    <td><?php echo $row['estante'] ?></td>
-                    <td><?php echo $row['prateleira'] ?></td>
-                    <td><?php echo $row['posicao'] ?></td>
+                    <td><?php echo $row['conjunto'] . " " . $row['rua'] . " " . $row['estante'] . " " . $row['prateleira'] . " " . $row['posicao'] ?></td>
+                    <td><?php echo $row['matricula'] ?></td>
+                    <td><a href="edit_page.php?id=<?php echo $row['id']; ?>">Editar</a><br><br>
+                      <a href="delete.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Tem certeza que deseja deletar o registro?');">Deletar</a>
+                    </td>
                   </tr>
                 <?php } ?>
               </tbody>
