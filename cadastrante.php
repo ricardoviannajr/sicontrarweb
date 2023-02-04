@@ -22,17 +22,17 @@ if (isset($_POST['submit'])) {
 
     include_once('config.php');
 
-    $un_prod_sigla = $_POST['un_prod_sigla'];
-    $un_prod_nome = $_POST['un_prod_nome'];
-    $data_inicio = $_POST['data_inicio'];
-    $data_fim = $_POST['data_fim'];
-    $desc_docs = $_POST['desc_docs'];
-    $un_arq = $_POST['un_arq'];
-    $conjunto = $_POST['conjunto'];
-    $rua = $_POST['rua'];
-    $estante = $_POST['estante'];
-    $prateleira = $_POST['prateleira'];
-    $posicao = $_POST['posicao'];
+    $un_prod_sigla = strtoupper($_POST['un_prod_sigla']);
+    $un_prod_nome = strtoupper($_POST['un_prod_nome']);
+    $data_inicio = strtoupper($_POST['data_inicio']);
+    $data_fim = strtoupper($_POST['data_fim']);
+    $desc_docs = strtoupper($_POST['desc_docs']);
+    $un_arq = strtoupper($_POST['un_arq']);
+    $conjunto = strtoupper($_POST['conjunto']);
+    $rua = strtoupper($_POST['rua']);
+    $estante = strtoupper($_POST['estante']);
+    $prateleira = strtoupper($_POST['prateleira']);
+    $posicao = strtoupper($_POST['posicao']);
 
     $result = mysqli_query($conexao, "INSERT INTO cadastro(un_prod_sigla,un_prod_nome,data_inicio,data_fim,desc_docs,un_arq,conjunto,rua,estante,prateleira,posicao,matricula) 
         VALUES ('$un_prod_sigla','$un_prod_nome','$data_inicio','$data_fim','$desc_docs','$un_arq','$conjunto','$rua','$estante','$prateleira','$posicao','$matricula')");

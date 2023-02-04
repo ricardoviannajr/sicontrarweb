@@ -35,7 +35,7 @@ $sql = "UPDATE cadastro SET data_transf_cust=?, doc_encam=?, un_prod_sigla=?, un
 $stmt = mysqli_prepare($conn, $sql);
 
 // Vincular as variáveis à query
-mysqli_stmt_bind_param($stmt, 'sssssssssssssssssi', $data_transf_cust, $doc_encam, $un_prod_sigla, $un_prod_nome, $cx_num_ant, $cx_num_cust, $cod_clas_doc, $data_inicio, $data_fim, $desc_docs, $prazo_guarda, $destino, $un_arq, $conjunto, $rua, $estante, $prateleira, $posicao, $id);
+mysqli_stmt_bind_param($stmt, 'sssssssssssssssssss', $data_transf_cust, $doc_encam, $un_prod_sigla, $un_prod_nome, $cx_num_ant, $cx_num_cust, $cod_clas_doc, $data_inicio, $data_fim, $desc_docs, $prazo_guarda, $destino, $un_arq, $conjunto, $rua, $estante, $prateleira, $posicao, $id);
 
 // Executar a query
 $result = mysqli_stmt_execute($stmt);

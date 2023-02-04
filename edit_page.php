@@ -19,6 +19,7 @@ if (!$row) {
 }
 
 $data_transf_cust = $row['data_transf_cust'];
+$data_formatada = date("d/m/Y", strtotime($data_transf_cust));
 $doc_encam = $row['doc_encam'];
 $un_prod_sigla = $row['un_prod_sigla'];
 $un_prod_nome = $row['un_prod_nome'];
@@ -113,9 +114,9 @@ $posicao = $row['posicao'];
           <legend><b>SICONTRAR</b></legend>
           <br>
           <div class="column1">
-            <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+            <input type="hidden" name="id" value="<?php echo $id; ?>">
             <div class="inputBox">
-              <input type="text" name="data_transf_cust" id="data_transf_cust" class="inputUser" value="<?php echo $data_transf_cust; ?>">
+              <input type="text" name="data_transf_cust" id="data_transf_cust" class="inputUser" value="<?php echo $data_formatada; ?>">
               <label for="doc_encam" class="labelInput">Data de transferência ao arquivo de custódia</label>
             </div><br><br>
             <div class="inputBox">

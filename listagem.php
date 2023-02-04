@@ -1,9 +1,20 @@
 <?php
+// Configurações de paginação
+$pagina = (isset($_GET['pagina'])) ? $_GET['pagina'] : 1;
+$registros_por_pagina = 10;
+$inicio = ($registros_por_pagina * $pagina) - $registros_por_pagina;
+
 // Conexão com o banco de dados
 $conexao = mysqli_connect('localhost', 'root', '', 'sicontrar');
 // Consulta SQL para selecionar todos os registros da tabela cadastro
-$query = "SELECT * FROM cadastro";
+$query = "SELECT * FROM cadastro LIMIT $inicio, $registros_por_pagina";
 $resultado = mysqli_query($conexao, $query);
+
+// Consulta para contar o número total de registros
+$query_total = "SELECT COUNT(*) AS total FROM cadastro";
+$resultado_total = mysqli_query($conexao, $query_total);
+$total = mysqli_fetch_assoc($resultado_total)['total'];
+$paginas = ceil($total / $registros_por_pagina);
 ?>
 
 <!DOCTYPE html>
@@ -60,19 +71,42 @@ $resultado = mysqli_query($conexao, $query);
                     <td><?php echo $row['cod_clas_doc'] ?></td>
                     <td><?php echo $row['data_inicio'] ?></td>
                     <td><?php echo $row['data_fim'] ?></td>
-                    <td><?php echo $row['desc_docs'] ?></td>
+                    <td class="descricao"><?php echo $row['desc_docs'] ?></td>
                     <td><?php echo $row['prazo_guarda'] ?></td>
                     <td><?php echo $row['destino'] ?></td>
                     <td><?php echo $row['un_arq'] ?></td>
                     <td><?php echo $row['conjunto'] . " " . $row['rua'] . " " . $row['estante'] . " " . $row['prateleira'] . " " . $row['posicao'] ?></td>
                     <td><?php echo $row['matricula'] ?></td>
-                    <td><a href="edit_page.php?id=<?php echo $row['id']; ?>">Editar</a><br><br>
-                      <a href="delete.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Tem certeza que deseja deletar o registro?');">Deletar</a>
+                    <td class="btn-group"><button type="button" onclick="location.href='edit_page.php?id=<?php echo $row['id']; ?>'">Editar</button>
+                      <button type="button" onclick="if (confirm('Tem certeza que deseja deletar o registro?')) { window.location.href = 'delete.php?id=<?php echo $row['id']; ?>'; }">Deletar</button>
                     </td>
                   </tr>
                 <?php } ?>
               </tbody>
-            </table>
+            </table><br>
+            <div class="pagination">
+              <?php
+              if ($pagina > 1) {
+                echo "<a href='listagem.php?pagina=" . ($pagina - 1) . "'>Anterior </a>";
+              }
+              if ($pagina > 2) {
+                echo "<a href='listagem.php?pagina=" . ($pagina - 3) . "'> ... </a>";
+              }
+              if ($pagina > 1) {
+                echo "<a href='listagem.php?pagina=" . ($pagina - 1) . "'>" .  ($pagina - 1)  . "</a>";
+              }
+              echo "<b>" . $pagina . "</b>";
+              if ($pagina < $total) {
+                echo "<a href='listagem.php?pagina=" . ($pagina + 1) . "'>" .  ($pagina + 1)  . "</a>";
+              }
+              if ($pagina < $total - 1) {
+                echo "<a href='listagem.php?pagina=" . ($pagina + 2) . "'> ... </a>";
+              }
+              if ($pagina < $total) {
+                echo "<a href='listagem.php?pagina=" . ($pagina + 1) . "'> Próximo</a>";
+              }
+              ?>
+            </div>
           </div>
         </fieldset>
       </form>
