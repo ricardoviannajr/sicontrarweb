@@ -65,24 +65,20 @@ if (isset($_POST['submit'])) {
 <body onload="limparCampos()">
 
     <div class="sidebar">
-        <div>
-            <br>
-            <p>Usuário: <?php
-                        if (isset($_COOKIE["matricula"])) {
-                            $matricula = $_COOKIE["matricula"];
-                        }
-                        echo $matricula;
-                        ?>
-            </p>
-            <br>
-        </div>
+        <p>Usuário: <?php
+                    if (isset($_COOKIE["matricula"])) {
+                        $matricula = $_COOKIE["matricula"];
+                    }
+                    echo $matricula;
+                    ?>
+        </p>
         <a class="active" href="cadastrante.php">Cadastrante</a>
         <a href="listagem.php">Listagem de Caixas</a>
         <a href="sicontrar.php">Sair</a>
         <br><br><br>
         <div style="position: absolute;bottom: 5%">
-            <p>Documentos cadastrados:</p>
-            <p>
+            <p>Documentos cadastrados:
+                <br>
                 <?php
                 include_once('config.php');
                 $matricula = $_COOKIE['matricula'];
@@ -122,14 +118,21 @@ if (isset($_POST['submit'])) {
                             <input type="text" name="desc_docs" id="desc_docs" class="inputUser" required>
                             <label for="desc_docs" class="labelInput">Descrição dos documentos</label>
                         </div><br><br>
+                        <input type="submit" name="submit" id="submit"><br><br>
+                        <input type="reset" name="reset" id="reset">
                     </div>
                     <div class="column2">
                         <div>
                             <fieldset>
                                 <legend id="loc"><b>Localização</b></legend><br>
                                 <div class="inputBox">
-                                    <input type="text" name="un_arq" id="un_arq" class="inputUser" required>
-                                    <label for="un_arq" class="labelInput">Unidade de arquivo</label>
+                                    <label for="un_arq" class="labelInput">Unidade de arquivo</label><br><br>
+                                    <select name="un_arq" id="un_arq" required autocomplete="off">
+                                        <option value=""></option>
+                                        <option value="Brasília">Brasília</option>
+                                        <option value="Recife">Recife</option>
+                                        <option value="São Paulo">São Paulo</option>
+                                    </select>
                                 </div><br><br>
                                 <div class="inputBox">
                                     <input type="text" name="conjunto" id="conjunto" class="inputUser" required>
@@ -153,8 +156,6 @@ if (isset($_POST['submit'])) {
                                 </div>
                             </fieldset>
                         </div><br>
-                        <input type="submit" name="submit" id="submit"><br><br>
-                        <input type="reset" name="reset" id="reset">
                     </div>
                 </fieldset>
             </form>
