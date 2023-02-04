@@ -1,23 +1,11 @@
 <?php
 
+if (!isset($_COOKIE['logged_in']) || $_COOKIE['logged_in'] != "true") {
+    header("Location: sicontrar.php");
+}
+
 if (isset($_POST['submit'])) {
-    /* 
-        print_r($_POST['data_transf_cust']);
-        print_r($_POST['doc_encam']);
-        print_r($_POST['un_prod_sigla']);
-        print_r($_POST['un_prod_nome']);
-        print_r($_POST['cx_num_ant']);
-        print_r($_POST['cx_num_cust']);
-        print_r($_POST['cod_clas_doc']);
-        print_r($_POST['data_lim']);
-        print_r($_POST['desc_docs']);
-        print_r($_POST['prazo_guarda']);
-        print_r($_POST['destino']);
-        print_r($_POST['un_arq']);
-        print_r($_POST['conjunto']);
-        print_r($_POST['estante']);
-        print_r($_POST['prateleira']);   
-        */
+
     $matricula = $_COOKIE['matricula'];
 
     include_once('config.php');
@@ -54,7 +42,27 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" type="text/css" href="estilos.css">
 </head>
 
-<body>
+<script>
+    function limparCampos() {
+        document.getElementById("un_prod_sigla").value = "";
+        document.getElementById("un_prod_nome").value = "";
+        document.getElementById("data_inicio").value = "";
+        document.getElementById("data_fim").value = "";
+        document.getElementById("desc_docs").value = "";
+        document.getElementById("un_arq").value = "";
+        document.getElementById("conjunto").value = "";
+        document.getElementById("rua").value = "";
+        document.getElementById("estante").value = "";
+        document.getElementById("prateleira").value = "";
+        document.getElementById("posicao").value = "";
+    }
+
+    window.onunload = function() {
+        window.sessionStorage.clear();
+    }
+</script>
+
+<body onload="limparCampos()">
 
     <div class="sidebar">
         <div>

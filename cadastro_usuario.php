@@ -1,5 +1,9 @@
 <?php
 
+if (!isset($_COOKIE['logged_in']) || $_COOKIE['logged_in'] != "true") {
+  header("Location: sicontrar.php");
+}
+
 if (isset($_POST['submit'])) {
   include_once('config.php');
 

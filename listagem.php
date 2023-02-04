@@ -1,4 +1,9 @@
 <?php
+
+if (!isset($_COOKIE['logged_in']) || $_COOKIE['logged_in'] != "true") {
+  header("Location: sicontrar.php");
+}
+
 // Configurações de paginação
 $pagina = (isset($_GET['pagina'])) ? $_GET['pagina'] : 1;
 $registros_por_pagina = 10;

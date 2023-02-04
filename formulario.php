@@ -1,23 +1,10 @@
 <?php
 
+if (!isset($_COOKIE['logged_in']) || $_COOKIE['logged_in'] != "true") {
+    header("Location: sicontrar.php");
+}
+
 if (isset($_POST['submit'])) {
-    /* 
-        print_r($_POST['data_transf_cust']);
-        print_r($_POST['doc_encam']);
-        print_r($_POST['un_prod_sigla']);
-        print_r($_POST['un_prod_nome']);
-        print_r($_POST['cx_num_ant']);
-        print_r($_POST['cx_num_cust']);
-        print_r($_POST['cod_clas_doc']);
-        print_r($_POST['data_lim']);
-        print_r($_POST['desc_docs']);
-        print_r($_POST['prazo_guarda']);
-        print_r($_POST['destino']);
-        print_r($_POST['un_arq']);
-        print_r($_POST['conjunto']);
-        print_r($_POST['estante']);
-        print_r($_POST['prateleira']);   
-        */
 
     $matricula = $_COOKIE['matricula'];
 
@@ -44,6 +31,10 @@ if (isset($_POST['submit'])) {
 
     $result = mysqli_query($conexao, "INSERT INTO cadastro(data_transf_cust,doc_encam,un_prod_sigla,un_prod_nome,cx_num_ant,cx_num_cust,cod_clas_doc,data_inicio,data_fim,desc_docs,prazo_guarda,destino,un_arq,conjunto,rua,estante,prateleira,posicao,matricula) 
         VALUES ('$data_transf_cust','$doc_encam','$un_prod_sigla','$un_prod_nome','$cx_num_ant','$cx_num_cust','$cod_clas_doc','$data_inicio','$data_fim','$desc_docs','$prazo_guarda','$destino','$un_arq','$conjunto','$rua','$estante','$prateleira','$posicao','$matricula')");
+
+    header("Location: cadastro_doc_full_sucesso.php?data_transf_cust=$data_transf_cust&doc_encam=$doc_encam&un_prod_sigla=$un_prod_sigla&un_prod_nome=$un_prod_nome&cx_num_ant=$cx_num_ant&cx_num_cust=$cx_num_cust&cod_clas_doc=$cod_clas_doc&data_inicio=$data_inicio&data_fim=$data_fim&desc_docs=$desc_docs&prazo_guarda=$prazo_guarda&destino=$destino&un_arq=$un_arq&conjunto=$conjunto&rua=$rua&estante=$estante&prateleira=$prateleira&posicao=$posicao&matricula=$matricula");
+
+    unset($_POST);
 }
 
 ?>
@@ -71,6 +62,7 @@ if (isset($_POST['submit'])) {
         <a class="active" href="formulario.php">Gestão de Cadastros</a>
         <a href="cadastrante.php">Cadastrante</a>
         <a href="listagem.php">Listagem de Caixas</a>
+        <a href="cadastro_usuario.php">Cadastro de Usuários</a>
         <a href="sicontrar.php">Sair</a>
 
         <!--
@@ -122,7 +114,7 @@ if (isset($_POST['submit'])) {
                     <br>
                     <div class="column1">
                         <div class="inputBox">
-                            <input type="text" name="data_transf_cust" id="data_transf_cust" class="inputUser" required value="<?php echo $data_transf_cust; ?>">
+                            <input type="text" name="data_transf_cust" id="data_transf_cust" class="inputUser" required>
                             <label for="doc_encam" class="labelInput">Data de transferência ao arquivo de custódia</label>
                         </div><br><br>
                         <div class="inputBox">

@@ -175,6 +175,28 @@ legend {
     background-image: linear-gradient(to right, rgb(0, 80, 172), rgb(80, 19, 195));
 }
 
+#button {
+    background-image: linear-gradient(to right, rgb(0, 92, 197), rgb(90, 20, 220));
+    width: 25%;
+    border: none;
+    padding: 15px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+#button:hover {
+    background-image: linear-gradient(to right, rgb(0, 80, 172), rgb(80, 19, 195));
+}
+
+.div_center {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
 #reset {
     background-image: linear-gradient(to right, rgb(0, 92, 197), rgb(90, 20, 220));
     width: 100%;
@@ -193,13 +215,14 @@ legend {
 #tabela_usuarios {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
-    width: 90%;
+    width: 100%;
 }
 
 #tabela_usuarios td,
 #tabela_usuarios th {
     border: 1px solid #ddd;
     padding: 8px;
+    text-align: center;
 }
 
 #tabela_usuarios tr:nth-child(even) {
@@ -229,7 +252,7 @@ legend {
 #listagem td,
 #listagem th {
     border: 1px solid #ddd;
-    padding: 4px;
+    padding: 3px;
     text-align: center;
 }
 
@@ -243,8 +266,8 @@ legend {
 }
 
 #listagem th {
-    padding-top: 4px;
-    padding-bottom: 4px;
+    padding-top: 3px;
+    padding-bottom: 3px;
     text-align: center;
     background-color: dodgerblue;
     color: white;
@@ -334,7 +357,7 @@ div.content {
 }
 
 .pagination b {
-    background-color: #4CAF50;
+    background-color: dodgerblue;
     color: white;
     border-radius: 3px;
     padding: 8px 16px;
