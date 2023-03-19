@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (isset($_SESSION['login_error'])) {
+  echo "<script>alert('" . htmlspecialchars($_SESSION['login_error']) . "');</script>";
+  unset($_SESSION['login_error']);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,14 +15,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sistema de Controle de Arquivos</title>
   <link rel="stylesheet" type="text/css" href="estilos.css">
+  <script>
+    function show1() {
+      var senha = document.getElementById("senha");
+      if (senha.type === "password") {
+        senha.type = "text";
+      } else {
+        senha.type = "password";
+      }
+    }
+  </script>
 </head>
 
 <body>
   <div class="box1">
     <div class="row">
-      <form action="login.php" method="post" enctype="multipart/form-data" autocomplete="off">
+      <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data" autocomplete="off">
         <fieldset>
-          <legend><b>Login</b></legend>
+          <legend><b>SICONTRAR</b></legend>
           <br>
           <div class="column">
             <div class="inputBox">
@@ -23,12 +41,20 @@
             </div>
             <br><br>
             <div class="inputBox">
-              <input type="password" class="inputUser" id="senha" name="senha" required autocomplete="off">
+              <input type="password" class="inputUser" id="senha" name="senha" required autocomplete="off"><input type="checkbox" id="checksenha" onclick="show1()"><label for="checksenha" class="mostrasenha">Exibir</label>
               <label for="senha" class="labelInput">Senha</label>
             </div>
             <br><br>
             <div class="inputBox">
               <input type="submit" name="submit" id="submit">
+            </div>
+            <div class="error-message">
+              <?php
+              if (isset($_SESSION['login_error'])) {
+                echo $_SESSION['login_error'];
+                unset($_SESSION['login_error']);
+              }
+              ?>
             </div>
           </div>
         </fieldset>

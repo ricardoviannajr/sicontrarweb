@@ -53,6 +53,24 @@ if (isset($_POST['submit'])) {
         erro_senhas.style.display = "none";
       }
     }
+
+    function show1() {
+      var senha = document.getElementById("senha");
+      if (senha.type === "password") {
+        senha.type = "text";
+      } else {
+        senha.type = "password";
+      }
+    }
+
+    function show2() {
+      var confirma_senha = document.getElementById("confirma_senha");
+      if (confirma_senha.type === "password") {
+        confirma_senha.type = "text";
+      } else {
+        confirma_senha.type = "password";
+      }
+    }
   </script>
 </head>
 
@@ -80,12 +98,12 @@ if (isset($_POST['submit'])) {
             </div>
             <br><br>
             <div class="inputBox">
-              <input type="password" class="inputUser" id="senha" name="senha" required>
+              <input type="password" class="inputUser" id="senha" name="senha" required><input type="checkbox" id="checksenha" onclick="show1()"><label for="checksenha" class="mostrasenha">Exibir</label>
               <label for="senha" class="labelInput">Senha</label>
             </div>
             <br><br>
             <div class="inputBox">
-              <input type="password" class="inputUser" id="confirma_senha" name="confirma_senha" required onblur="validarSenhas()">
+              <input type="password" class="inputUser" id="confirma_senha" name="confirma_senha" required onblur="validarSenhas()"><input type="checkbox" id="checksenha" onclick="show2()"><label for="checksenha" class="mostrasenha">Exibir</label>
               <label for="confirma_senha" class="labelInput">Confirme sua Senha</label>
             </div>
             <br>

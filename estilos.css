@@ -390,3 +390,9 @@ div.content {
 .descricao {
     width: 500px;
 }
+
+.mostrasenha {
+    font-size: 12px;
+    color: dodgerblue;
+    vertical-align: middle;
+}
