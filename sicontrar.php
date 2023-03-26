@@ -30,7 +30,7 @@ if (isset($_SESSION['login_error'])) {
 <body>
   <div class="box1">
     <div class="row">
-      <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data" autocomplete="off">
+      <form action="login.php" method="post" enctype="multipart/form-data" autocomplete="off">
         <fieldset>
           <legend><b>SICONTRAR</b></legend>
           <br>
