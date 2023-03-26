@@ -41,7 +41,9 @@ if (isset($_SESSION['login_error'])) {
             </div>
             <br><br>
             <div class="inputBox">
-              <input type="password" class="inputUser" id="senha" name="senha" required autocomplete="off"><input type="checkbox" id="checksenha" onclick="show1()"><label for="checksenha" class="mostrasenha">Exibir</label>
+              <input type="password" class="inputUser" id="senha" name="senha" required autocomplete="off">
+              </br></br>
+              <input type="checkbox" id="checksenha" onclick="show1()"><label for="checksenha" class="mostrasenha">Exibir Senha</label>
               <label for="senha" class="labelInput">Senha</label>
             </div>
             <br><br>

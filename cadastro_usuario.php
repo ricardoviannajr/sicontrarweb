@@ -75,6 +75,35 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
+  <div class="sidebar">
+    <p>Usuário: <?php
+                if (isset($_COOKIE["matricula"])) {
+                  $matricula = $_COOKIE["matricula"];
+                }
+                echo $matricula;
+                ?>
+    </p>
+    <a class="active" href="formulario.php">Gestão de Cadastros</a>
+    <a href="cadastrante.php">Cadastrante</a>
+    <a href="listagem.php">Listagem de Caixas</a>
+    <a href="cadastro_usuario.php">Cadastro de Usuários</a>
+    <a href="sicontrar.php">Sair</a>
+    <div style="position: absolute;bottom: 25%;font-size: smaller;">
+      <p>
+      <h3 style="text-align: center;">Top 10</h3>
+      <?php
+      include_once('config.php');
+      $query = "SELECT matricula, COUNT(matricula) as count FROM cadastro GROUP BY matricula ORDER BY count DESC LIMIT 10";
+      $result = mysqli_query($conexao, $query);
+      echo '<ul>';
+      while ($row = mysqli_fetch_array($result)) {
+        echo '<li>' . $row['matricula'] . ' - ' . $row['count'] . ' registros' . '</li>';
+      }
+      echo '</ul>';
+      ?>
+      </p>
+    </div>
+  </div>
   <div class="box1">
     <div class="row">
       <form id="cadastro_usuario" action="cadastro_usuario.php" method="post" enctype="multipart/form-data">
@@ -98,12 +127,16 @@ if (isset($_POST['submit'])) {
             </div>
             <br><br>
             <div class="inputBox">
-              <input type="password" class="inputUser" id="senha" name="senha" required><input type="checkbox" id="checksenha" onclick="show1()"><label for="checksenha" class="mostrasenha">Exibir</label>
+              <input type="password" class="inputUser" id="senha" name="senha" required>
+              <br><br>
+              <input type="checkbox" id="checksenha" onclick="show1()"><label for="checksenha" class="mostrasenha">Exibir Senha</label>
               <label for="senha" class="labelInput">Senha</label>
             </div>
             <br><br>
             <div class="inputBox">
-              <input type="password" class="inputUser" id="confirma_senha" name="confirma_senha" required onblur="validarSenhas()"><input type="checkbox" id="checksenha" onclick="show2()"><label for="checksenha" class="mostrasenha">Exibir</label>
+              <input type="password" class="inputUser" id="confirma_senha" name="confirma_senha" required onblur="validarSenhas()">
+              <br><br>
+              <input type="checkbox" id="checksenha" onclick="show2()"><label for="checksenha" class="mostrasenha">Exibir Senha</label>
               <label for="confirma_senha" class="labelInput">Confirme sua Senha</label>
             </div>
             <br>
