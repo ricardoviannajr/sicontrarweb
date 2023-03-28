@@ -95,6 +95,18 @@ option {
     color: white;
 }
 
+.box5 {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -10%);
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    border-radius: 15px;
+    width: 80%;
+    color: white;
+}
+
 fieldset {
     border: 3px solid dodgerblue;
 }
@@ -164,12 +176,27 @@ legend {
     letter-spacing: 2px;
 }
 
+.searchbox {
+    background: none;
+    border: none;
+    border-bottom: 1px solid white;
+    outline: none;
+    color: white;
+    font-size: 15px;
+    width: 20%;
+    letter-spacing: 2px;
+}
+
 .labelInput {
     position: absolute;
     top: 0px;
     left: 0px;
     pointer-events: none;
     transition: .5s;
+}
+
+.voltar {
+    float: right;
 }
 
 .inputUser:focus~.labelInput,

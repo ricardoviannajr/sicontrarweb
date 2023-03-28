@@ -62,31 +62,9 @@ if (isset($_POST['submit'])) {
         <a class="active" href="formulario.php">Gestão de Cadastros</a>
         <a href="cadastrante.php">Cadastrante</a>
         <a href="listagem.php">Listagem de Caixas</a>
+        <a href="pesquisa.php">Pesquisa</a>
         <a href="cadastro_usuario.php">Cadastro de Usuários</a>
         <a href="sicontrar.php">Sair</a>
-
-        <!--
-        <div>
-            <h3>
-                <center>Últimos 10 Registros</center>
-            </h3>
-            <?php /*
-            include_once('config.php');
-            $query = "SELECT matricula FROM cadastro ORDER BY id DESC LIMIT 10";
-            $result = mysqli_query($conexao, $query);
-            $matriculas = array();
-            while ($row = mysqli_fetch_array($result)) {
-                $matriculas[] = $row['matricula'];
-            }
-            $matriculas_unique = array_unique($matriculas);
-            echo '<ul>';
-            foreach ($matriculas_unique as $matricula) {
-                echo '<li>' . $matricula . '</li>';
-            }
-            echo '</ul>';
-            */ ?>
-        </div>
-        -->
 
         <div style="position: absolute;bottom: 25%;font-size: smaller;">
             <p>
@@ -101,6 +79,19 @@ if (isset($_POST['submit'])) {
             }
             echo '</ul>';
             ?>
+            </p>
+        </div>
+        <div style="position: absolute;bottom: 5%;;font-size: smaller;">
+            <p>
+            <h3 style="text-align: center;">Total de Registros:
+                <?php
+                include_once('config.php');
+                $query = "SELECT * FROM cadastro";
+                $result = mysqli_query($conexao, $query);
+                $total_registros = mysqli_num_rows($result);
+                echo $total_registros;
+                ?>
+            </h3>
             </p>
         </div>
     </div>

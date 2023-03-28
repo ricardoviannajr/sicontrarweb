@@ -73,7 +73,7 @@ if (isset($_POST['submit'])) {
                     ?>
         </p>
         <a class="active" href="cadastrante.php">Cadastrante</a>
-        <a href="listagem.php">Listagem de Caixas</a>
+        <a href="pesquisa.php">Pesquisa</a>
         <a href="sicontrar.php">Sair</a>
         <br><br><br>
         <div style="position: absolute;bottom: 5%">

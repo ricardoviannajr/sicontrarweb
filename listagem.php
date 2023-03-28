@@ -112,6 +112,17 @@ $paginas = ceil($total / $registros_por_pagina);
               }
               ?>
             </div>
+            <div class="voltar">
+              <?php
+              if (isset($_COOKIE['tipo'])) {
+                if ($_COOKIE['tipo'] == 'cadastrante') {
+                  echo '<button type="button" onclick="location.href=\'cadastrante.php\'">Ir para a página de cadastro</button>';
+                } else if ($_COOKIE['tipo'] == 'gestor') {
+                  echo '<button type="button" onclick="location.href=\'formulario.php\'">Ir para a página de cadastro</button>';
+                }
+              }
+              ?>
+            </div>
           </div>
         </fieldset>
       </form>
