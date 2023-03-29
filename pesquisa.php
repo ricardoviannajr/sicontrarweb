@@ -57,7 +57,7 @@ if (isset($_POST['search'])) {
 </head>
 
 <body>
-    <div class="box5">
+    <div class="box6">
         <div class="row">
             <fieldset>
                 <legend><b>Pesquisar</b></legend>
