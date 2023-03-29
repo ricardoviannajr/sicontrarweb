@@ -107,6 +107,20 @@ option {
     color: white;
 }
 
+.box6 {
+    position: absolute;
+    width: 100%;
+    top: 10%;
+    /* left: 50%; */
+    transform: translateX(7px);
+    /* transform: translate(-50%, -10%); */
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    border-radius: 15px;
+    width: 94%;
+    color: white;
+}
+
 fieldset {
     border: 3px solid dodgerblue;
 }
