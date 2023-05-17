@@ -36,7 +36,7 @@ if (isset($_SESSION['login_error'])) {
           <br>
           <div class="column">
             <div class="inputBox">
-              <input type="text" class="inputUser" id="matricula" name="matricula" required autocomplete="off">
+              <input type="text" class="inputUser" style="text-transform: uppercase" id="matricula" name="matricula" required autocomplete="off">
               <label for="matricula" class="labelInput">Matrícula</label>
             </div>
             <br><br>

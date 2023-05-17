@@ -82,7 +82,7 @@ if (isset($_POST['submit'])) {
                 <?php
                 include_once('config.php');
                 $matricula = $_COOKIE['matricula'];
-                $query = "SELECT COUNT(matricula) as count FROM cadastro WHERE matricula='$matricula'";
+                $query = "SELECT COUNT(matricula) as count FROM cadastro WHERE matricula LIKE '$matricula'";
                 $result = mysqli_query($conexao, $query);
                 $row = mysqli_fetch_array($result);
                 echo $row['count'] . ' documentos';
