@@ -81,11 +81,36 @@ if (isset($_POST['search'])) {
                     <br>
                     <?php
                     // Exibe os resultados em uma tabela
+                    // Exibe os resultados em uma tabela
                     if ($result != null && $result->num_rows > 0) {
                         echo "<table id=listagem>";
-                        echo "<tr><th>Data Transferência</th><th>Doc Encaminhado</th><th>Un Prod Sigla</th><th>Un Prod Nome</th><th>CX Número Anterior</th><th>CX Número de Custódia</th><th>Cod Classe Doc</th><th>Data Início</th><th>Data Fim</th><th>Descrição</th><th>Prazo de Guarda</th><th>Destino</th><th>Unidade Arquivística</th><th>Conjunto</th><th>Rua</th><th>Estante</th><th>Prateleira</th><th>Posição</th><th>Matrícula</th></tr>";
+                        echo "<tr><th>Data Transferência</th><th>Doc Encaminhado</th><th>Un Prod Sigla</th><th>Un Prod Nome</th><th>CX Número Anterior</th><th>CX Número de Custódia</th><th>Cod Classe Doc</th><th>Data Início</th><th>Data Fim</th><th>Descrição</th><th>Prazo de Guarda</th><th>Destino</th><th>Unidade Arquivística</th><th>Conjunto</th><th>Rua</th><th>Estante</th><th>Prateleira</th><th>Posição</th><th>Matrícula</th><th>Ações</th></tr>";
                         while ($row = $result->fetch_assoc()) {
-                            echo "<tr><td>" . $row["data_transf_cust"] . "</td><td>" . $row["doc_encam"] . "</td><td>" . $row["un_prod_sigla"] . "</td><td>" . $row["un_prod_nome"] . "</td><td>" . $row["cx_num_ant"] . "</td><td>" . $row["cx_num_cust"] . "</td><td>" . $row["cod_clas_doc"] . "</td><td>" . $row["data_inicio"] . "</td><td>" . $row["data_fim"] . "</td><td>" . $row["desc_docs"] . "</td><td>" . $row["prazo_guarda"] . "</td><td>" . $row["destino"] . "</td><td>" . $row["un_arq"] . "</td><td>" . $row["conjunto"] . "</td><td>" . $row["rua"] . "</td><td>" . $row["estante"] . "</td><td>" . $row["prateleira"] . "</td><td>" . $row["posicao"] . "</td><td>" . $row["matricula"] . "</td></tr>";
+                            echo "<tr>";
+                            echo "<td>" . $row["data_transf_cust"] . "</td>";
+                            echo "<td>" . $row["doc_encam"] . "</td>";
+                            echo "<td>" . $row["un_prod_sigla"] . "</td>";
+                            echo "<td>" . $row["un_prod_nome"] . "</td>";
+                            echo "<td>" . $row["cx_num_ant"] . "</td>";
+                            echo "<td>" . $row["cx_num_cust"] . "</td>";
+                            echo "<td>" . $row["cod_clas_doc"] . "</td>";
+                            echo "<td>" . $row["data_inicio"] . "</td>";
+                            echo "<td>" . $row["data_fim"] . "</td>";
+                            echo "<td>" . $row["desc_docs"] . "</td>";
+                            echo "<td>" . $row["prazo_guarda"] . "</td>";
+                            echo "<td>" . $row["destino"] . "</td>";
+                            echo "<td>" . $row["un_arq"] . "</td>";
+                            echo "<td>" . $row["conjunto"] . "</td>";
+                            echo "<td>" . $row["rua"] . "</td>";
+                            echo "<td>" . $row["estante"] . "</td>";
+                            echo "<td>" . $row["prateleira"] . "</td>";
+                            echo "<td>" . $row["posicao"] . "</td>";
+                            echo "<td>" . $row["matricula"] . "</td>";
+                            echo '<td class="btn-group">';
+                            echo '<button type="button" onclick="location.href=\'edit_page.php?id=' . $row['id'] . '\'">Editar</button>';
+                            echo '<button type="button" onclick="if (confirm(\'Tem certeza que deseja deletar o registro?\')) { window.location.href = \'delete.php?id=' . $row['id'] . '\'; }">Deletar</button>';
+                            echo '</td>';
+                            echo "</tr>";
                         }
                         echo "</table>";
                     } else {

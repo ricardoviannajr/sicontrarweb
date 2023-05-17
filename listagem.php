@@ -12,7 +12,7 @@ $inicio = ($registros_por_pagina * $pagina) - $registros_por_pagina;
 // Conexão com o banco de dados
 $conexao = mysqli_connect('localhost', 'root', '', 'sicontrar');
 // Consulta SQL para selecionar todos os registros da tabela cadastro
-$query = "SELECT * FROM cadastro LIMIT $inicio, $registros_por_pagina";
+$query = "SELECT * FROM cadastro ORDER BY id DESC LIMIT $inicio, $registros_por_pagina";
 $resultado = mysqli_query($conexao, $query);
 
 // Consulta para contar o número total de registros
@@ -92,6 +92,9 @@ $paginas = ceil($total / $registros_por_pagina);
             <div class="pagination">
               <?php
               if ($pagina > 1) {
+                echo "<a href='listagem.php?pagina=1'>Primeira</a>";
+              }
+              if ($pagina > 1) {
                 echo "<a href='listagem.php?pagina=" . ($pagina - 1) . "'>Anterior </a>";
               }
               if ($pagina > 2) {
@@ -109,6 +112,9 @@ $paginas = ceil($total / $registros_por_pagina);
               }
               if ($pagina < $total) {
                 echo "<a href='listagem.php?pagina=" . ($pagina + 1) . "'> Próximo</a>";
+              }
+              if ($pagina < $total) {
+                echo "<a href='listagem.php?pagina=$total'>Última</a>";
               }
               ?>
             </div>
