@@ -85,9 +85,9 @@ option {
 
 .box4 {
     position: absolute;
-    top: 10%;
+    top: 5%;
     left: 50%;
-    transform: translate(-50%, -10%);
+    transform: translate(-50%, 0%);
     background-color: rgba(0, 0, 0, 0.6);
     padding: 40px;
     border-radius: 15px;
@@ -160,6 +160,12 @@ legend {
     /*height: 300px;*/
 }
 
+.column4 {
+    float: left;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
 .row:after {
     content: "";
     display: table;
@@ -218,6 +224,10 @@ legend {
     top: -20px;
     font-size: 12px;
     color: dodgerblue;
+}
+
+.chart-container canvas {
+    max-width: 100%;
 }
 
 #submit {
