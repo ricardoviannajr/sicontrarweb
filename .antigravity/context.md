@@ -1,5 +1,4 @@
-﻿# Contexto e Caderno do Projeto
-
-- **Nome do Caderno:** sicontrarweb github
-- **RepositÃ³rio GitHub:** https://github.com/ricardoviannajr/sicontrarweb
-- **Regra de Consulta RAG:** Antes de implementaÃ§Ãµes estruturais, consulte o caderno no NotebookLM via MCP.
+# Memória do Projeto no NotebookLM
+- Caderno: sicontrarweb github
+- Coleção: Projetos Antigravity
+- URL: https://notebook.google.com/notebook/678feca4-0ffe-49f7-ad06-f3462f86a3fe
